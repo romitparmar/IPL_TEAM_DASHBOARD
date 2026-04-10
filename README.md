@@ -44,3 +44,32 @@ It provides a **secure admin panel** and a **clean user interface** for cricket 
 ---
 
 ## 🧠 Tech Stack
+
+---
+
+## ⚙️ Setup Guide
+
+### 🚀 Step 1: Clone Repo
+```bash
+git clone https://github.com/romitparmar/IPL_TEAM_DASHBOARD.git
+cd IPL_TEAM_DASHBOARD
+
+pip install -r requirements.txt
+
+mongodb://localhost:27017/
+
+python app.py
+
+{
+  "name": "MS Dhoni",
+  "team": "CSK",
+  "role": "Wicketkeeper",
+  "runs": 450,
+  "wickets": 0
+}
+
+👨‍💻 Author
+
+Romit Parmar
+🔗 https://github.com/romitparmar
+
