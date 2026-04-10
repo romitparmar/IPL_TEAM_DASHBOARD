@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPL Dashboard — Setup Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0d0f14; --surface: #161a23; --card: #1c2130;
+    --border: rgba(255,255,255,0.08); --accent: #f5a623;
+    --green: #2ecc71; --blue: #3a86ff; --red: #e63946;
+    --text: #f0f0f0; --muted: #8892a4;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 15px; line-height: 1.7; padding: 0 0 4rem; }
+  .hero { background: var(--surface); border-bottom: 1px solid var(--border); padding: 2.5rem 3rem; }
+  .hero-title { font-family: var(--font-display); font-size: 42px; color: var(--accent); letter-spacing: 2px; }
+  .hero-sub { color: var(--muted); font-size: 15px; margin-top: 6px; }
+  .content { max-width: 780px; margin: 0 auto; padding: 2.5rem 2rem; }
+  .step-group { margin-bottom: 2.5rem; }
+  .step-num { font-family: var(--font-display); font-size: 13px; color: var(--accent); letter-spacing: 2px; margin-bottom: 6px; }
+  .step-title { font-family: var(--font-display); font-size: 24px; letter-spacing: 1px; margin-bottom: 1rem; }
+  p { color: var(--muted); margin-bottom: 10px; }
+  code {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 6px; padding: 12px 16px;
+    font-family: var(--font-mono); font-size: 13px;
+    color: #a8d8a8; display: block; margin: 10px 0 14px;
+    line-height: 1.8; overflow-x: auto; white-space: pre;
+  }
+  .inline-code { display: inline; padding: 2px 7px; font-size: 13px; border-radius: 4px; background: var(--surface); color: var(--accent); font-family: var(--font-mono); }
+  .note { background: rgba(245,166,35,0.08); border: 1px solid rgba(245,166,35,0.2); border-radius: 10px; padding: 14px 18px; margin: 14px 0; font-size: 14px; color: var(--accent); }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+  .schema-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0; }
+  .schema-table th { font-size: 11px; color: var(--muted); text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); text-transform: uppercase; letter-spacing: 0.07em; }
+  .schema-table td { padding: 9px 10px; border-bottom: 1px solid var(--border); color: var(--text); }
+  .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-family: var(--font-mono); }
+  .tag-str   { background: rgba(46,204,113,0.12);  color: var(--green); }
+  .tag-int   { background: rgba(58,134,255,0.12);  color: var(--blue); }
+  .tag-float { background: rgba(245,166,35,0.12);  color: var(--accent); }
+  .pill-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1rem; }
+  .pill { font-size: 12px; padding: 4px 12px; border-radius: 20px; font-weight: 500; }
+  .pill-mongo { background: rgba(77,179,61,0.12); color: #4db33d; border: 1px solid rgba(77,179,61,0.2); }
+  .pill-flask { background: rgba(58,134,255,0.12); color: var(--blue); border: 1px solid rgba(58,134,255,0.2); }
+  .success-box { background: rgba(46,204,113,0.08); border: 1px solid rgba(46,204,113,0.2); border-radius: 10px; padding: 14px 18px; margin-top: 14px; color: var(--green); font-size: 14px; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-title">IPL Dashboard — Setup Guide</div>
+  <div class="hero-sub">NoSQL Micro Project &nbsp;·&nbsp; MongoDB + Flask &nbsp;·&nbsp; Step-by-step</div>
+  <div class="pill-row" style="margin-top:1rem;">
+    <span class="pill pill-mongo">MongoDB</span>
+    <span class="pill pill-flask">Flask (Python)</span>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="step-group">
+    <div class="step-num">STEP 01</div>
+    <div class="step-title">Install Required Software</div>
+    <p>You need Python and MongoDB installed on your system. Download them from their official sites if not already installed.</p>
+    <p><strong style="color:var(--text);">MongoDB:</strong> Download from <span class="inline-code">mongodb.com/try/download/community</span></p>
+    <p><strong style="color:var(--text);">Python 3.x:</strong> Download from <span class="inline-code">python.org/downloads</span></p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="step-group">
+    <div class="step-num">STEP 02</div>
+    <div class="step-title">Set Up Project Folder</div>
+    <p>Create a folder and set up the structure like this:</p>
+<code>ipl-dashboard/
+├── app.py
+├── requirements.txt
+└── templates/
+    └── index.html</code>
+    <p>Place the files you received (app.py, requirements.txt, index.html) exactly as shown above.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="step-group">
+    <div class="step-num">STEP 03</div>
+    <div class="step-title">Create requirements.txt</div>
+    <p>Create a new file called <span class="inline-code">requirements.txt</span> in your project folder and paste this inside:</p>
+<code>flask
+flask-cors
+pymongo</code>
+    <p>Then open your terminal, go inside the project folder, and run:</p>
+<code>cd ipl-dashboard
+pip install -r requirements.txt</code>
+    <p>This installs: Flask, PyMongo, and Flask-CORS.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="step-group">
+    <div class="step-num">STEP 04</div>
+    <div class="step-title">Start MongoDB</div>
+    <p>Open a new terminal window and start MongoDB:</p>
+    <p><strong style="color:var(--text);">On Windows:</strong></p>
+<code>net start MongoDB</code>
+    <p><strong style="color:var(--text);">On Mac/Linux:</strong></p>
+<code>mongod</code>
+    <div class="note">MongoDB runs on port 27017 by default. Keep this terminal open while using the app!</div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="step-group">
+    <div class="step-num">STEP 05</div>
+    <div class="step-title">Run the Flask App</div>
+    <p>In your original terminal (inside the project folder), run:</p>
+<code>python app.py</code>
+    <p>You should see output like:</p>
+<code>Seeded IPL 2024 teams
+Seeded IPL 2024 players
+ * Running on http://127.0.0.1:5000</code>
+    <div class="success-box">Open your browser and go to: <strong>http://localhost:5000</strong> — your IPL Dashboard is live!</div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="step-group">
+    <div class="step-num">DATABASE SCHEMA</div>
+    <div class="step-title">MongoDB Collections</div>
+    <p>The app automatically creates these 2 collections in a database called <span class="inline-code">ipl_dashboard</span> with real IPL 2024 data:</p>
+
+    <p style="color:var(--text);margin-top:1rem;margin-bottom:6px;font-weight:500;">Collection: <span class="inline-code">players</span></p>
+    <table class="schema-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>_id</td><td><span class="tag tag-str">ObjectId</span></td><td>Auto-generated by MongoDB</td></tr>
+        <tr><td>name</td><td><span class="tag tag-str">String</span></td><td>Player full name (e.g. Virat Kohli)</td></tr>
+        <tr><td>team</td><td><span class="tag tag-str">String</span></td><td>Team code (MI, CSK, RCB, KKR...)</td></tr>
+        <tr><td>role</td><td><span class="tag tag-str">String</span></td><td>Batsman / Bowler / All-rounder / Wicket-keeper</td></tr>
+        <tr><td>matches</td><td><span class="tag tag-int">Int</span></td><td>Matches played in IPL 2024</td></tr>
+        <tr><td>runs</td><td><span class="tag tag-int">Int</span></td><td>Total runs scored in IPL 2024</td></tr>
+        <tr><td>avg</td><td><span class="tag tag-float">Float</span></td><td>Batting average</td></tr>
+        <tr><td>sr</td><td><span class="tag tag-float">Float</span></td><td>Strike rate</td></tr>
+      </tbody>
+    </table>
+
+    <p style="color:var(--text);margin-top:1.4rem;margin-bottom:6px;font-weight:500;">Collection: <span class="inline-code">teams</span></p>
+    <table class="schema-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>_id</td><td><span class="tag tag-str">ObjectId</span></td><td>Auto-generated by MongoDB</td></tr>
+        <tr><td>team</td><td><span class="tag tag-str">String</span></td><td>Team short code (e.g. KKR, SRH)</td></tr>
+        <tr><td>full_name</td><td><span class="tag tag-str">String</span></td><td>Full team name (e.g. Kolkata Knight Riders)</td></tr>
+        <tr><td>wins</td><td><span class="tag tag-int">Int</span></td><td>Number of wins in IPL 2024</td></tr>
+        <tr><td>losses</td><td><span class="tag tag-int">Int</span></td><td>Number of losses in IPL 2024</td></tr>
+        <tr><td>points</td><td><span class="tag tag-int">Int</span></td><td>Total points (wins × 2)</td></tr>
+        <tr><td>matches</td><td><span class="tag tag-int">Int</span></td><td>Total matches played</td></tr>
+        <tr><td>nrr</td><td><span class="tag tag-float">Float</span></td><td>Net Run Rate (real IPL 2024 value)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note" style="margin-top:1.4rem;">
+      All data is seeded automatically on first run. No manual entry needed — 10 IPL 2024 teams and 22 real players are inserted into MongoDB when you start the app for the first time.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="step-group">
+    <div class="step-num">QUICK REFERENCE</div>
+    <div class="step-title">Useful Commands</div>
+    <p>Verify MongoDB data in MongoDB shell:</p>
+<code>mongosh
+use ipl_dashboard
+db.teams.find().pretty()
+db.players.find().pretty()</code>
+    <p>If you want to reset and re-seed all data fresh:</p>
+<code>mongosh
+use ipl_dashboard
+db.players.drop()
+db.teams.drop()
+exit</code>
+    <p>Then run <span class="inline-code">python app.py</span> again — it will re-seed everything automatically.</p>
+  </div>
+
+</div>
+</body>
+</html>
